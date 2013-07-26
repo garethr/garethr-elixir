@@ -19,10 +19,7 @@ GEM
       net-http-persistent (>= 2.7)
       net-http-pipeline
     hashr (0.0.22)
-    hiera (1.2.1)
-      json_pure
     highline (1.6.19)
-    json_pure (1.8.0)
     kwalify (0.7.2)
     launchy (2.3.0)
       addressable (~> 2.3)
@@ -43,10 +40,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puppet (3.2.3)
-      facter (~> 1.6)
-      hiera (~> 1.0)
-      rgen (~> 0.6.5)
+    puppet (2.7.22)
+      facter (~> 1.5)
     puppet-lint (0.3.2)
     puppet-syntax (1.0.0)
       puppet (>= 2.7.0)
@@ -61,7 +56,6 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
-    rgen (0.6.5)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -103,7 +97,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  puppet (~> 3.2.0)
+  puppet (~> 2.7.0)
   puppet-lint
   puppet-syntax
   puppetlabs_spec_helper
