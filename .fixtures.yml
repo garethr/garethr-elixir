@@ -1,0 +1,8 @@
+fixtures:
+  repositories:
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    apt: "git://github.com/puppetlabs/puppetlabs-apt.git"
+    erlang: "git://github.com/garethr/garethr-erlang.git"
+    wget: "git://github.com/maestrodev/puppet-wget.git"
+  symlinks:
+    elixir: "#{source_dir}"
