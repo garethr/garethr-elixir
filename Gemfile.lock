@@ -103,7 +103,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  puppet (>= 2.7)
+  puppet (~> 3.2.0)
   puppet-lint
   puppet-syntax
   puppetlabs_spec_helper
