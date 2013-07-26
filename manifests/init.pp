@@ -4,13 +4,14 @@
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*version*]
+#   Version string used to find zip file from Github release
 #
 class elixir (
+  $version = $elixir::params::version
 ) inherits elixir::params {
 
-  # validate parameters here
+  validate_string($version)
 
   class { 'elixir::install': } ->
   Class['elixir']

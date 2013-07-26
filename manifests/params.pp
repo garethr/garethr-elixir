@@ -4,15 +4,9 @@
 # It sets variables according to platform
 #
 class elixir::params {
+  $version = '0.10.0'
   case $::osfamily {
-    'Debian': {
-      $package_name = 'elixir'
-      $service_name = 'elixir'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'elixir'
-      $service_name = 'elixir'
-    }
+    'Debian': {}
     default: {
       fail("${::operatingsystem} not supported")
     }
