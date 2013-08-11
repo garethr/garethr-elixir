@@ -33,4 +33,17 @@ describe 'elixir' do
       it { expect { should }.to raise_error(Puppet::Error, /Nexenta not supported/) }
     end
   end
+
+  context 'invalid version param' do
+    describe 'elixir class without any parameters on Solaris/Nexenta' do
+      let(:facts) {{
+        :osfamily => 'Debian',
+        :lsbdistcodename => 'precise',
+      }}
+
+      let(:params) { {'version' => true} }
+      it { expect { should }.to raise_error(Puppet::Error, /true is not a string/) }
+    end
+  end
+
 end
