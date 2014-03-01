@@ -5,6 +5,7 @@ describe 'elixir' do
     describe "elixir class without any parameters" do
       let(:facts) {{
         :osfamily => 'Debian',
+        :lsbdistid => 'debian',
         :lsbdistcodename => 'precise',
       }}
 
