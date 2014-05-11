@@ -18,9 +18,9 @@ class elixir::install {
     creates => '/opt/elixir',
   }
 
-  file { '/usr/bin':
-    ensure => 'link',
-    target => '/opt/elixir/*',
+  exec { '/usr/bin':
+    command => 'bash -c "ln -s /opt/elixir/bin/* /usr/bin"',
     require => Exec['unzip_elixir']
   }
+
 }
