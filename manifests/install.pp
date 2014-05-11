@@ -7,7 +7,7 @@ class elixir::install {
   ensure_packages(['unzip'])
 
   wget::fetch { 'download_elixir':
-    source      => "https://github.com/elixir-lang/elixir/releases/download/v${elixir::version}/v${elixir::version}.zip",
+    source      => "https://github.com/elixir-lang/elixir/releases/download/v${elixir::version}/precompiled.zip",
     destination => '/tmp/elixir.zip',
     before      => Exec['unzip_elixir'],
   }
