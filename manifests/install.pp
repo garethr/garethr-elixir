@@ -18,4 +18,9 @@ class elixir::install {
     creates => '/opt/elixir',
   }
 
+  file { '/usr/bin':
+    ensure => 'link',
+    target => '/opt/elixir/*',
+    require => Exec['unzip_elixir']
+  }
 }
