@@ -7,7 +7,7 @@ class elixir::install {
   ensure_packages(['unzip'])
 
   wget::fetch { 'download_elixir':
-    source      => "https://github.com/elixir-lang/elixir/releases/download/v${elixir::version}/v${elixir::version}.zip",
+    source      => "https://github.com/elixir-lang/elixir/releases/download/v${elixir::version}/precompiled.zip",
     destination => '/tmp/elixir.zip',
     before      => Exec['unzip_elixir'],
   }
@@ -18,4 +18,27 @@ class elixir::install {
     creates => '/opt/elixir',
   }
 
+  file { '/usr/bin/elixir':
+    ensure => 'link',
+    target => '/opt/elixir/bin/elixir',
+    require => Exec['unzip_elixir']
+  }
+
+  file { '/usr/bin/elixirc':
+    ensure => 'link',
+    target => '/opt/elixir/bin/elixirc',
+    require => Exec['unzip_elixir']
+  }
+
+  file { '/usr/bin/iex':
+    ensure => 'link',
+    target => '/opt/elixir/bin/iex',
+    require => Exec['unzip_elixir']
+  }
+
+  file { '/usr/bin/mix':
+    ensure => 'link',
+    target => '/opt/elixir/bin/mix',
+    require => Exec['unzip_elixir']
+  }
 }
