@@ -19,26 +19,26 @@ class elixir::install {
   }
 
   file { '/usr/bin/elixir':
-    ensure => 'link',
-    target => '/opt/elixir/bin/elixir',
+    ensure  => 'link',
+    target  => '/opt/elixir/bin/elixir',
     require => Exec['unzip_elixir']
   }
 
   file { '/usr/bin/elixirc':
-    ensure => 'link',
-    target => '/opt/elixir/bin/elixirc',
+    ensure  => 'link',
+    target  => '/opt/elixir/bin/elixirc',
     require => Exec['unzip_elixir']
   }
 
   file { '/usr/bin/iex':
-    ensure => 'link',
-    target => '/opt/elixir/bin/iex',
+    ensure  => 'link',
+    target  => '/opt/elixir/bin/iex',
     require => Exec['unzip_elixir']
   }
 
   file { '/usr/bin/mix':
-    ensure => 'link',
-    target => '/opt/elixir/bin/mix',
+    ensure  => 'link',
+    target  => '/opt/elixir/bin/mix',
     require => Exec['unzip_elixir']
   }
 }
