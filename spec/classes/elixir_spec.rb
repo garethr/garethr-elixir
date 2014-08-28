@@ -9,9 +9,9 @@ describe 'elixir' do
         :lsbdistcodename => 'precise',
       }}
 
-      it { should include_class('elixir::params') }
+      it { should contain_class('elixir::params') }
       it { should contain_class('elixir::install') }
-      it { should include_class('erlang') }
+      it { should contain_class('erlang') }
 
       it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v0.13.2/precompiled.zip') }
       it { should contain_exec('unzip_elixir')}
