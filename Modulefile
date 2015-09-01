@@ -7,4 +7,3 @@ summary    'Module for installing elixir on Ubuntu'
 
 dependency 'puppetlabs/stdlib'
 dependency 'garethr/erlang'
-dependency 'maestrodev/wget'

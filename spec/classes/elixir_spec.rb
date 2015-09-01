@@ -13,12 +13,11 @@ describe 'elixir' do
       it { should contain_class('elixir::install') }
       it { should contain_class('erlang') }
 
-      it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v1.0.2/precompiled.zip') }
-      it { should contain_exec('unzip_elixir')}
+      it { should contain_package('elixir').with_ensure('1.0.5') }
 
       context 'passing a version number' do
         let(:params) { {'version' => '0.13.2'} }
-        it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v0.13.2/precompiled.zip') }
+        it { should contain_package('elixir').with_ensure('0.13.2') }
       end
     end
   end
