@@ -13,7 +13,7 @@ describe 'elixir' do
       it { should contain_class('elixir::install') }
       it { should contain_class('erlang') }
 
-      it { should contain_package('elixir').with_ensure('1.0.4') }
+      it { should contain_package('elixir').with_ensure('1.0.5') }
 
       context 'passing a version number' do
         let(:params) { {'version' => '0.13.2'} }

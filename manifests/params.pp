@@ -4,7 +4,7 @@
 # It sets variables according to platform
 #
 class elixir::params {
-  $version = '1.0.4'
+  $version = '1.0.5'
   case $::osfamily {
     'Debian': {}
     default: {
