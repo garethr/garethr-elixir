@@ -12,7 +12,7 @@ RSpec.configure do |c|
     puppet_install
     puppet_module_install(:source => proj_root, :module_name => 'elixir')
     shell('puppet module install puppetlabs-stdlib')
-    shell('puppet module install garethr-erlang')
-    shell('puppet module install maestrodev-wget')
+    #shell('puppet module install garethr-erlang')
+    shell('puppet module install puppet-archive')
   end
 end

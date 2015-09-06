@@ -9,17 +9,20 @@ describe 'elixir' do
         :lsbdistcodename => 'precise',
       }}
 
-      it { should contain_class('elixir::params') }
       it { should contain_class('elixir::install') }
-      it { should contain_class('erlang') }
 
-      it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v1.0.2/precompiled.zip') }
-      it { should contain_exec('unzip_elixir')}
+      it do
+        should contain_archive('/tmp/precompiled.zip').with(
+          'extract' => true,
+          'extract_path' => '/opt/elixir',
+          'creates' => '/opt/elixir/bin/elixir',
+        )
+      end 
 
-      context 'passing a version number' do
-        let(:params) { {'version' => '0.13.2'} }
-        it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v0.13.2/precompiled.zip') }
-      end
+      #context 'passing a version number' do
+      #  let(:params) { {'version' => '0.13.2'} }
+      #  it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v0.13.2/precompiled.zip') }
+      #end
     end
   end
 
