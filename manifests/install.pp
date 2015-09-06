@@ -9,16 +9,16 @@ class elixir::install {
   $install_file = inline_template('<%=File.basename(URI::parse(@install_source).path)%>')
 
   file { $elixir::destination:
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   } ->
   archive { "/tmp/${install_file}":
-    source        => $elixir::source_url,
-    extract       => true,
-    extract_path  => $elixir::destination,
-    creates       => "${elixir::destination}/bin/elixir",
+    source       => $elixir::source_url,
+    extract      => true,
+    extract_path => $elixir::destination,
+    creates      => "${elixir::destination}/bin/elixir",
   }
 
   file { '/usr/bin/elixir':
