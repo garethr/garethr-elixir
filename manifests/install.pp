@@ -1,44 +1,47 @@
 # == Class elixir::install
 #
 class elixir::install {
-  include elixir::params
-  include 'erlang'
 
-  ensure_packages(['unzip'])
+  # Include archive class to install required faraday gems
+  include ::archive
 
-  wget::fetch { 'download_elixir':
-    source      => "https://github.com/elixir-lang/elixir/releases/download/v${elixir::version}/precompiled.zip",
-    destination => '/tmp/elixir.zip',
-    before      => Exec['unzip_elixir'],
-  }
+  $install_source = $elixir::source_url
+  $install_file = inline_template('<%=File.basename(URI::parse(@install_source).path)%>')
 
-  exec { 'unzip_elixir':
-    command => '/usr/bin/unzip elixir.zip -d /opt/elixir',
-    cwd     => '/tmp',
-    creates => '/opt/elixir',
+  file { $elixir::destination:
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+  } ->
+  archive { "/tmp/${install_file}":
+    source        => $elixir::source_url,
+    extract       => true,
+    extract_path  => $elixir::destination,
+    creates       => "${elixir::destination}/bin/elixir",
   }
 
   file { '/usr/bin/elixir':
     ensure  => 'link',
-    target  => '/opt/elixir/bin/elixir',
-    require => Exec['unzip_elixir']
+    target  => "${elixir::destination}/bin/elixir",
+    require => Archive["/tmp/${install_file}"],
   }
 
   file { '/usr/bin/elixirc':
     ensure  => 'link',
-    target  => '/opt/elixir/bin/elixirc',
-    require => Exec['unzip_elixir']
+    target  => "${elixir::destination}/bin/elixirc",
+    require => Archive["/tmp/${install_file}"],
   }
 
   file { '/usr/bin/iex':
     ensure  => 'link',
-    target  => '/opt/elixir/bin/iex',
-    require => Exec['unzip_elixir']
+    target  => "${elixir::destination}/bin/iex",
+    require => Archive["/tmp/${install_file}"],
   }
 
   file { '/usr/bin/mix':
     ensure  => 'link',
-    target  => '/opt/elixir/bin/mix',
-    require => Exec['unzip_elixir']
+    target  => "${elixir::destination}/bin/mix",
+    require => Archive["/tmp/${install_file}"],
   }
 }
