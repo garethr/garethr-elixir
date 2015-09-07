@@ -19,11 +19,16 @@ describe 'elixir' do
         )
       end 
 
-      #context 'passing a version number' do
-      #  let(:params) { {'version' => '0.13.2'} }
-      #  it { should contain_wget__fetch('download_elixir').with_source('https://github.com/elixir-lang/elixir/releases/download/v0.13.2/precompiled.zip') }
-      #end
-    end
+      context 'passing a version number' do
+        let(:params) { {'version' => '0.13.2'} }
+        it do
+          should contain_archive('/tmp/precompiled.zip').with(
+            'extract' => true,
+            'extract_path' => '/opt/elixir',
+            'creates' => '/opt/elixir/bin/elixir',
+          )
+        end
+      end
   end
 
 
